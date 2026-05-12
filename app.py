@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request 
 import numpy as np
 import joblib
 
@@ -27,7 +27,6 @@ def predict():
             request.form['thal']
         ]
         model = heart_model
-
     elif disease == 'diabetes':
         features = [
             request.form['Pregnancies'], request.form['Glucose'],
@@ -36,7 +35,6 @@ def predict():
             request.form['DPF'], request.form['Age']
         ]
         model = diabetes_model
-
     else:
         features = [
             request.form['Age'], request.form['Gender'],
@@ -46,14 +44,9 @@ def predict():
             request.form['Albumin'], request.form['AGR']
         ]
         model = liver_model
-
     values = [float(x) for x in features]
-
     prediction = model.predict([values])
-
     result = "Positive" if prediction[0] == 1 else "Negative"
-
     return render_template('index.html', prediction_text=f"Result: {result}")
-
 if __name__ == "__main__":
     app.run(debug=True)

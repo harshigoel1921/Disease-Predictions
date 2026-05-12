@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import joblib
+import joblib # type: ignore
 
 # Load models
 heart_model = joblib.load('models/heart_model.pkl')
@@ -9,7 +9,6 @@ liver_model = joblib.load('models/liver_model.pkl')
 
 # Page config
 st.set_page_config(page_title="AI Disease Predictor", layout="wide")
-
 # ---------- PREMIUM CSS ----------
 st.markdown("""
 <style>
